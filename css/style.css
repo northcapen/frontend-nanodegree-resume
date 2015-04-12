@@ -11,6 +11,7 @@
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
+  height: 50px;
 }
 
 h1 {

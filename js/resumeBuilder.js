@@ -84,14 +84,14 @@ var work = {
             "position": "Software Engineer",
             "employer": "Openway",
             "yearsWorked": 10,
-            "location": "Санкт-Петербург, Петроградская наб. 36",
+            "location": "СПб, Петроградская наб. 36",
             "dates" : "2005 - ..."
         },
         {
             "position": "Junior Software Engineer",
             "employer": "Edudata",
             "yearsWorked": 0.5,
-            "location": "Санкт-Петербург, Б. Конюшенная, 29",
+            "location": "СПб, Б. Конюшенная, 29",
             "dates" : "2004",
             "description" : "Online education company"
         }
@@ -117,21 +117,21 @@ var education = {
             "dates": "Graduated in 2006",
             "degree": "with honours",
             "url" : "http://www.math.spbu.ru/rus/",
-            "location": "Санкт-Петербург, Университетский пр. 38"
+            "location": ["СПб, Университетский пр. 38", "СПб, Камская ул. 16", "СПб, 14 линия 29", "СПб, 10 линия, 33"]
         },
         {
             "name": "FML # 239",
             "dates": "Graduated in 2001",
             "degree": "End of senior classes",
             "url": "http://www.239.ru/",
-            "location": "Санкт-Петербург, Кирочная, 8"
+            "location": "СПб, Кирочная, 8"
         },
         {
             "name": "School # 70",
             "dates": "1996 - 1999",
             "degree": "End of primary school",
             "url" : "http://www.gimnazia70.spb.ru/",
-            "location" : "Санкт-Петербург, ул. Литературов 11-13"
+            "location" : "СПб, ул. Литературов 11-13"
         }
     ],
     "onlineCourses" : [
@@ -173,7 +173,12 @@ var education = {
             var educationEntry = $('.education-entry:last');
 
             educationEntry.append(HTMLschoolName.replace('%data%', school.name)+  HTMLschoolDegree.replace('%data%', school.degree));
-            educationEntry.append(HTMLschoolLocation.replace('%data%', school.location));
+
+            if(typeof school.location == 'object') {
+                educationEntry.append(HTMLschoolLocation.replace('%data%', school.location[0]));
+            } else {
+                educationEntry.append(HTMLschoolLocation.replace('%data%', school.location));
+            }
             educationEntry.append(HTMLschoolDates.replace('%data%', school.dates));
         }
 

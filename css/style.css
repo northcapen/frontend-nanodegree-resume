@@ -17,6 +17,12 @@ body {
   margin-bottom: 25px;
 }
 
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 h1 {
   font-size: 40px;
   color: #F5A623;
@@ -174,6 +180,12 @@ span {
   text-align: center;
 }
 
+@media screen and (min-width: 1200px) {
+    body {
+        width: 1200px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
   #letsConnect {
     margin-top: 5%;
@@ -201,8 +213,6 @@ span {
 #map {
   display: block;
   height: 300px;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
 #mapDiv {

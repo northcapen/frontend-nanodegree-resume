@@ -108,8 +108,7 @@ var education = {
             "dates": "Graduated in 2006",
             "degree": "with honours",
             "url" : "http://www.math.spbu.ru/rus/",
-            "location": "St. Petersburg",
-
+            "location": "St. Petersburg"
         },
         {
             "name": "FML # 239",

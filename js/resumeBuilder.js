@@ -14,10 +14,11 @@ var bio = {
 
 var $header = $('#header');
 $header
-    .prepend(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage))
     .prepend(HTMLheaderRole.replace('%data%', bio.role))
     .prepend(HTMLheaderName.replace('%data%', bio.name))
-    .prepend(HTMLbioPic.replace('%data%', 'images/me.jpg'));
+    .append(HTMLbioPic.replace('%data%', 'images/me.jpg'))
+    .append(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
+
 
 
 $('#topContacts').

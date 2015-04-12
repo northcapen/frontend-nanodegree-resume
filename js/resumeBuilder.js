@@ -9,36 +9,29 @@ var bio = {
         "twitter" : "@northcapen",
         "github" : "northcapen",
         "location" : "Tallinn"
+    },
+    "display" : function() {
+        $('#header')
+            .prepend(HTMLheaderRole.replace('%data%', this.role))
+            .prepend(HTMLheaderName.replace('%data%', this.name))
+            .append(HTMLbioPic.replace('%data%', 'images/me.jpg'))
+            .append(HTMLwelcomeMsg.replace('%data%', this.welcomeMessage));
+
+        $('#topContacts').
+            append(HTMLmobile.replace('%data%', this.contacts.mobile)).
+            append(HTMLemail.replace('%data%', this.contacts.email)).
+            append(HTMLtwitter.replace('%data%', this.contacts.twitter)).
+            append(HTMLgithub.replace('%data%', this.contacts.github)).
+            append(HTMLgithub.replace('%data%', this.contacts.github)).
+            append(HTMLlocation.replace('%data%', this.contacts.location));
+
+
+        $('#header').append(HTMLskillsStart);
+        $('#skills').append(HTMLskills.replace('%data%', this.skills[0]))
+                    .append(HTMLskills.replace('%data%', this.skills[1]))
+                    .append(HTMLskills.replace('%data%', this.skills[2]));
     }
 };
-
-var $header = $('#header');
-$header
-    .prepend(HTMLheaderRole.replace('%data%', bio.role))
-    .prepend(HTMLheaderName.replace('%data%', bio.name))
-    .append(HTMLbioPic.replace('%data%', 'images/me.jpg'))
-    .append(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
-
-
-
-$('#topContacts').
-      append(HTMLmobile.replace('%data%', bio.contacts.mobile)).
-      append(HTMLemail.replace('%data%', bio.contacts.email)).
-      append(HTMLtwitter.replace('%data%', bio.contacts.twitter)).
-      append(HTMLgithub.replace('%data%', bio.contacts.github)).
-      append(HTMLgithub.replace('%data%', bio.contacts.github)).
-      append(HTMLlocation.replace('%data%', bio.contacts.location));
-
-
-$header.append(HTMLskillsStart);
-var skills = $('#skills');
-
-var s = bio.skills;
-skills.append(HTMLskills.replace('%data%', s[0]));
-skills.append(HTMLskills.replace('%data%', s[1]));
-skills.append(HTMLskills.replace('%data%', s[2]));
-
-
 var projects = {
     "list": [
         {
@@ -79,8 +72,6 @@ var projects = {
         }
     }
 };
-projects.display();
-
 var work = {
     "jobs": [
         {
@@ -98,9 +89,21 @@ var work = {
             "dates" : "2004",
             "description" : "Online education company"
         }
-    ]
-};
+    ],
+    "display" : function () {
+        for(var j in this.jobs) {
+            $('#workExperience').append(HTMLworkStart);
+            var job = this.jobs[j];
+            var employer = HTMLworkEmployer.replace('%data%', job.employer);
+            var title = HTMLworkTitle.replace('%data%', job.position);
+            var workEntry = $('.work-entry:last');
 
+            workEntry.append(employer + title);
+            workEntry.append(HTMLworkDates.replace('%data%', job.dates));
+            workEntry.append(HTMLworkLocation.replace('%data%', job.location));
+        }
+    }
+};
 var education = {
     "schools": [
         {
@@ -169,23 +172,11 @@ var education = {
         }
     }
 };
+
+bio.display();
+projects.display();
+work.display();
 education.display();
-
-displayWork();
-
-function displayWork () {
-    for(j in work.jobs) {
-        $('#workExperience').append(HTMLworkStart);
-        var job = work.jobs[j];
-        var employer = HTMLworkEmployer.replace('%data%', job.employer);
-        var title = HTMLworkTitle.replace('%data%', job.position);
-        var workEntry = $('.work-entry:last');
-
-        workEntry.append(employer + title);
-        workEntry.append(HTMLworkDates.replace('%data%', job.dates));
-        workEntry.append(HTMLworkLocation.replace('%data%', job.location));
-    }
-}
 
 $(document).click(function(loc) {
   logClicks(loc.pageX, loc.pageY);

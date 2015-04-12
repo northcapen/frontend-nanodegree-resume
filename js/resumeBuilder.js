@@ -11,13 +11,17 @@ var bio = {
         "location" : "Tallinn"
     },
     "display" : function() {
-        $('#header')
+        var $topContacts = $('#topContacts');
+        var $footerContacts = $('#footerContacts');
+        var $header = $('#header');
+
+        $header
             .prepend(HTMLheaderRole.replace('%data%', this.role))
             .prepend(HTMLheaderName.replace('%data%', this.name))
             .append(HTMLbioPic.replace('%data%', 'images/me.jpg'))
             .append(HTMLwelcomeMsg.replace('%data%', this.welcomeMessage));
 
-        $('#topContacts').
+        $topContacts.
             append(HTMLmobile.replace('%data%', this.contacts.mobile)).
             append(HTMLemail.replace('%data%', this.contacts.email)).
             append(HTMLtwitter.replace('%data%', this.contacts.twitter)).
@@ -25,9 +29,11 @@ var bio = {
             append(HTMLgithub.replace('%data%', this.contacts.github)).
             append(HTMLlocation.replace('%data%', this.contacts.location));
 
+        $footerContacts.append($topContacts.html());
+        $header.append(HTMLskillsStart);
 
-        $('#header').append(HTMLskillsStart);
-        $('#skills').append(HTMLskills.replace('%data%', this.skills[0]))
+        var $skills = $('#skills');
+        $skills.append(HTMLskills.replace('%data%', this.skills[0]))
                     .append(HTMLskills.replace('%data%', this.skills[1]))
                     .append(HTMLskills.replace('%data%', this.skills[2]));
     }
@@ -78,14 +84,14 @@ var work = {
             "position": "Software Engineer",
             "employer": "Openway",
             "yearsWorked": 10,
-            "location": "St. Petersburg",
+            "location": "Санкт-Петербург, Петроградская наб. 36",
             "dates" : "2005 - ..."
         },
         {
             "position": "Junior Software Engineer",
             "employer": "Edudata",
             "yearsWorked": 0.5,
-            "location": "St. Petersburg",
+            "location": "Санкт-Петербург, Б. Конюшенная, 29",
             "dates" : "2004",
             "description" : "Online education company"
         }
@@ -111,21 +117,21 @@ var education = {
             "dates": "Graduated in 2006",
             "degree": "with honours",
             "url" : "http://www.math.spbu.ru/rus/",
-            "location": "St. Petersburg"
+            "location": "Санкт-Петербург, Университетский пр. 38"
         },
         {
             "name": "FML # 239",
             "dates": "Graduated in 2001",
-            "location": "St. Petersburg",
             "degree": "End of senior classes",
-            "url": "http://www.239.ru/"
+            "url": "http://www.239.ru/",
+            "location": "Санкт-Петербург, Кирочная, 8"
         },
         {
             "name": "School # 70",
             "dates": "1996 - 1999",
-            "location": "St. Petersburg",
             "degree": "End of primary school",
-            "url" : "http://www.gimnazia70.spb.ru/"
+            "url" : "http://www.gimnazia70.spb.ru/",
+            "location" : "Санкт-Петербург, ул. Литературов 11-13"
         }
     ],
     "onlineCourses" : [
@@ -170,6 +176,18 @@ var education = {
             educationEntry.append(HTMLschoolLocation.replace('%data%', school.location));
             educationEntry.append(HTMLschoolDates.replace('%data%', school.dates));
         }
+
+        $('#education').append(HTMLonlineClasses);
+
+        for(var oc in this.onlineCourses) {
+            var school   = this.onlineCourses[oc];
+            $('#education').append(HTMLschoolStart);
+            var educationEntry = $('.education-entry:last');
+
+            educationEntry.append(HTMLonlineTitle.replace('%data%', school.school)+  HTMLonlineSchool.replace('%data%', school.title));
+            educationEntry.append(HTMLonlineDates.replace('%data%', school.date));
+        }
+
     }
 };
 

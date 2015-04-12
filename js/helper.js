@@ -138,7 +138,6 @@ function initializeMap() {
       locations.push(work.jobs[job].location);
     }
 
-    console.log(locations);
     return locations;
   }
 
@@ -171,7 +170,7 @@ function initializeMap() {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+        infoWindow.open(map);
     });
 
     // this is where the pin actually gets added to the map.
@@ -228,10 +227,6 @@ function initializeMap() {
   pinPoster(locations);
 
 }
-
-/*
-Uncomment the code below when you're ready to implement a Google Map!
-*/
 
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);

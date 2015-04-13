@@ -2,15 +2,15 @@ var bio = {
     "name": "Anton Voskobovich",
     "role": "Developer",
     "skills": ["evolutioning", "triagering", "paraprogramming"],
-    "welcomeMessage" : "Getting things together",
-    "contacts" : {
-        "mobile" : "79112332346",
-        "email" : "anton.voskobovich@gmail.com",
-        "twitter" : "@northcapen",
-        "github" : "northcapen",
-        "location" : "Tallinn"
+    "welcomeMessage": "Getting things together",
+    "contacts": {
+        "mobile": "79112332346",
+        "email": "anton.voskobovich@gmail.com",
+        "twitter": "@northcapen",
+        "github": "northcapen",
+        "location": "Tallinn"
     },
-    "display" : function() {
+    "display": function () {
         var $topContacts = $('#topContacts');
         var $footerContacts = $('#footerContacts');
         var $header = $('#header');
@@ -33,7 +33,7 @@ var bio = {
         $header.append(HTMLskillsStart);
 
         var $skills = $('#skills');
-        for (var si = 0; si<this.skills.length; si++) {
+        for (var si = 0; si < this.skills.length; si++) {
             $skills.append(HTMLskills.replace('%data%', this.skills[si]));
         }
     }
@@ -59,10 +59,10 @@ var projects = {
             "description": "Fourth generation of Openway Web Banking"
         },
         {
-            "name" : "Panda",
-            "years" : "2015 - ...",
-            "country" : "Russia/Estonia/Kazakhstan",
-            "description" : "New awesome Web Banking"
+            "name": "Panda",
+            "years": "2015 - ...",
+            "country": "Russia/Estonia/Kazakhstan",
+            "description": "New awesome Web Banking"
         }
     ],
     "display": function () {
@@ -85,19 +85,19 @@ var work = {
             "employer": "Openway",
             "yearsWorked": 10,
             "location": "СПб, Петроградская наб. 36",
-            "dates" : "2005 - ..."
+            "dates": "2005 - ..."
         },
         {
             "position": "Junior Software Engineer",
             "employer": "Edudata",
             "yearsWorked": 0.5,
             "location": "СПб, Б. Конюшенная, 29",
-            "dates" : "2004",
-            "description" : "Online education company"
+            "dates": "2004",
+            "description": "Online education company"
         }
     ],
-    "display" : function () {
-        for(var i = 0; i < this.jobs.length; i++) {
+    "display": function () {
+        for (var i = 0; i < this.jobs.length; i++) {
             $('#workExperience').append(HTMLworkStart);
             var job = this.jobs[i];
             var employer = HTMLworkEmployer.replace('%data%', job.employer);
@@ -116,7 +116,7 @@ var education = {
             "name": "Mathematic mechanical faculty, SPBSU",
             "dates": "Graduated in 2006",
             "degree": "with honours",
-            "url" : "http://www.math.spbu.ru/rus/",
+            "url": "http://www.math.spbu.ru/rus/",
             "location": ["СПб, Университетский пр. 38", "СПб, Камская ул. 16", "СПб, 14 линия 29", "СПб, 10 линия, 33"]
         },
         {
@@ -130,51 +130,51 @@ var education = {
             "name": "School # 70",
             "dates": "1996 - 1999",
             "degree": "End of primary school",
-            "url" : "http://www.gimnazia70.spb.ru/",
-            "location" : "СПб, ул. Литературов 11-13"
+            "url": "http://www.gimnazia70.spb.ru/",
+            "location": "СПб, ул. Литературов 11-13"
         }
     ],
-    "onlineCourses" : [
+    "onlineCourses": [
         {
-            "title" : "HTML and CSS",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "HTML and CSS",
+            "school": "Udacity",
+            "date": 2015
         },
         {
-            "title" : "Javascript Basics",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "Javascript Basics",
+            "school": "Udacity",
+            "date": 2015
         },
         {
-            "title" : "JQuery",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "JQuery",
+            "school": "Udacity",
+            "date": 2015
         },
         {
-            "title" : "Object-oriented Javascript",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "Object-oriented Javascript",
+            "school": "Udacity",
+            "date": 2015
         },
         {
-            "title" : "Intro to AJAX",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "Intro to AJAX",
+            "school": "Udacity",
+            "date": 2015
         },
         {
-            "title" : "Responsive Design",
-            "school" : "Udacity",
-            "date" : 2015
+            "title": "Responsive Design",
+            "school": "Udacity",
+            "date": 2015
         }
     ],
-    "display" : function () {
-        for(var i = 0; i< this.schools.length; i++) {
+    "display": function () {
+        for (var i = 0; i < this.schools.length; i++) {
             $('#education').append(HTMLschoolStart);
             var school = this.schools[i];
             var educationEntry = $('.education-entry:last');
 
-            educationEntry.append(HTMLschoolName.replace('%data%', school.name)+  HTMLschoolDegree.replace('%data%', school.degree));
+            educationEntry.append(HTMLschoolName.replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree));
 
-            if(typeof school.location == 'object') {
+            if (typeof school.location == 'object') {
                 educationEntry.append(HTMLschoolLocation.replace('%data%', school.location[0]));
             } else {
                 educationEntry.append(HTMLschoolLocation.replace('%data%', school.location));
@@ -184,12 +184,12 @@ var education = {
 
         $('#education').append(HTMLonlineClasses);
 
-        for(i=0; i < this.onlineCourses.length; i++) {
-            school   = this.onlineCourses[i];
+        for (i = 0; i < this.onlineCourses.length; i++) {
+            school = this.onlineCourses[i];
             $('#education').append(HTMLschoolStart);
             var educationEntry = $('.education-entry:last');
 
-            educationEntry.append(HTMLonlineTitle.replace('%data%', school.school)+  HTMLonlineSchool.replace('%data%', school.title));
+            educationEntry.append(HTMLonlineTitle.replace('%data%', school.school) + HTMLonlineSchool.replace('%data%', school.title));
             educationEntry.append(HTMLonlineDates.replace('%data%', school.date));
         }
 
@@ -201,17 +201,17 @@ projects.display();
 work.display();
 education.display();
 
-$(document).click(function(loc) {
-  logClicks(loc.pageX, loc.pageY);
+$(document).click(function (loc) {
+    logClicks(loc.pageX, loc.pageY);
 });
 
 function logClicks(x, y) {
-   console.log(x, y);
+    console.log(x, y);
 }
 
 function inName(fullName) {
-  var names = fullName.split(' ');
-  names[0] = names[0].charAt(0).toUpperCase() + names[0].slice(1).toLowerCase();
-  names[1] = names[1].toUpperCase();
-  return names.join(' ');
+    var names = fullName.split(' ');
+    names[0] = names[0].charAt(0).toUpperCase() + names[0].slice(1).toLowerCase();
+    names[1] = names[1].toUpperCase();
+    return names.join(' ');
 }

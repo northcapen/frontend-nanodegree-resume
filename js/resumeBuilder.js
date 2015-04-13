@@ -33,9 +33,9 @@ var bio = {
         $header.append(HTMLskillsStart);
 
         var $skills = $('#skills');
-        $skills.append(HTMLskills.replace('%data%', this.skills[0]))
-                    .append(HTMLskills.replace('%data%', this.skills[1]))
-                    .append(HTMLskills.replace('%data%', this.skills[2]));
+        for (var si = 0; si<this.skills.length; si++) {
+            $skills.append(HTMLskills.replace('%data%', this.skills[si]));
+        }
     }
 };
 var projects = {
@@ -97,9 +97,9 @@ var work = {
         }
     ],
     "display" : function () {
-        for(var j in this.jobs) {
+        for(var i = 0; i < this.jobs.length; i++) {
             $('#workExperience').append(HTMLworkStart);
-            var job = this.jobs[j];
+            var job = this.jobs[i];
             var employer = HTMLworkEmployer.replace('%data%', job.employer);
             var title = HTMLworkTitle.replace('%data%', job.position);
             var workEntry = $('.work-entry:last');
@@ -167,9 +167,9 @@ var education = {
         }
     ],
     "display" : function () {
-        for(var sch in this.schools) {
+        for(var i = 0; i< this.schools.length; i++) {
             $('#education').append(HTMLschoolStart);
-            var school = this.schools[sch];
+            var school = this.schools[i];
             var educationEntry = $('.education-entry:last');
 
             educationEntry.append(HTMLschoolName.replace('%data%', school.name)+  HTMLschoolDegree.replace('%data%', school.degree));
@@ -184,8 +184,8 @@ var education = {
 
         $('#education').append(HTMLonlineClasses);
 
-        for(var oc in this.onlineCourses) {
-            var school   = this.onlineCourses[oc];
+        for(i=0; i < this.onlineCourses.length; i++) {
+            school   = this.onlineCourses[i];
             $('#education').append(HTMLschoolStart);
             var educationEntry = $('.education-entry:last');
 

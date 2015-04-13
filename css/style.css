@@ -18,9 +18,12 @@ body {
 }
 
 .sections {
+  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
 }
 
 h1 {
@@ -124,17 +127,19 @@ a {
   background-color: #4A4A4A;
 }
 
-/* TODO: Replace with image later */
 #header {
   background-color: #484848;
 }
 
 .flex-box {
-  display: -webkit-flex;
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
+  -webkit-flex-direction: row;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   justify-content: space-around;
+  -webkit-justify-content: space-around;
   padding: 10px;
 }
 
@@ -183,6 +188,7 @@ span {
 @media screen and (min-width: 1200px) {
     body {
         width: 1200px;
+        margin: 0 auto;
     }
 }
 
